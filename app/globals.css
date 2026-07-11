@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: oklch(99.4% 0.004 264);
+  --color-foreground: oklch(15% 0.02 264);
+  --color-brand: oklch(56% 0.2 264);
+  --color-brand-light: oklch(65% 0.17 264);
+  --color-brand-dark: oklch(49% 0.22 264);
+  --color-brand-50: oklch(97% 0.016 264);
+  --color-brand-100: oklch(94% 0.027 264);
+  --color-surface: oklch(97.8% 0.006 264);
+  --color-border: oklch(91.5% 0.009 264);
+  --color-text-primary: oklch(15% 0.02 264);
+  --color-text-secondary: oklch(44% 0.025 264);
+  --color-text-tertiary: oklch(62% 0.015 264);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Gradient headline text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Interactive buttons — CSS replaces framer-motion hover/tap on static pages */
+.btn-primary {
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.35);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+.btn-secondary {
+  transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.btn-secondary:hover {
+  transform: scale(1.02);
+}
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+.logo-mark {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+a:hover > .logo-mark {
+  transform: scale(1.08) rotate(3deg);
+}
+
+/* Hero glow */
+.hero-glow {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    oklch(97% 0.016 264 / 0.65) 0%,
+    transparent 70%
+  );
+}
+
+/* Feature card */
+.feature-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px -8px oklch(56% 0.2 264 / 0.08);
+  border-color: oklch(94% 0.027 264);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: oklch(80% 0.015 264); border-radius: 3px; }
+
+/* Accessibility: respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
