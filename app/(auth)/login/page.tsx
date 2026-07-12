@@ -8,7 +8,6 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  sendPasswordResetEmail,
   onAuthStateChanged,
   updateProfile,
   GoogleAuthProvider,
@@ -121,13 +120,19 @@ export default function LoginPage() {
       return;
     }
     try {
-      await sendPasswordResetEmail(auth, email);
-      setInfo(`Password reset email sent to ${email} — check your inbox and spam folder.`);
-    } catch (err: unknown) {
-      const code = (err as { code?: string })?.code ?? "";
-      if (code === "auth/invalid-email") setError("Please enter a valid email address.");
-      else if (code === "auth/too-many-requests") setError("Too many attempts. Please try again later.");
-      else setInfo(`If an account exists for ${email}, a reset email has been sent.`);
+      const res = await fetch("/api/reset-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({} as { error?: string }));
+        setError(data.error ?? "Couldn't send the email. Please try again later.");
+        return;
+      }
+      setInfo(`If an account exists for ${email}, a reset email has been sent — check your inbox and spam folder.`);
+    } catch {
+      setError("Couldn't send the email. Please try again later.");
     }
   }
 

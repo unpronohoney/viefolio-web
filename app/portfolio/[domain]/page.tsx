@@ -204,12 +204,10 @@ export default async function PortfolioPage({ params }: { params: Promise<{ doma
       <VisitTracker ownerUid={userId} />
       {/* Glass Navbar */}
       <nav className="sticky top-0 z-40 backdrop-blur-xl border-b" style={{ backgroundColor: `${profile.theme.colors.background}cc`, borderColor: `${color}15` }}>
-        <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)` }}>
-              <span className="text-white font-bold text-xs">V</span>
-            </div>
-            <span className="text-sm font-semibold tracking-tight" style={{ color: profile.theme.colors.text }}>{profile.fullName || domain}</span>
+            <img src="/logo.svg" alt="Viefolio" className="logo-mark w-12 h-12" />
+            <span className="text-m font-semibold tracking-tight" style={{ color: profile.theme.colors.text }}>{profile.fullName || domain}</span>
           </div>
           <a href="https://viefolio.com" className="text-xs hover:opacity-70 transition-colors font-medium" style={{ color }}>Built with Viefolio</a>
         </div>
@@ -222,11 +220,9 @@ export default async function PortfolioPage({ params }: { params: Promise<{ doma
 
       {/* Glass Footer */}
       <footer className="border-t backdrop-blur-xl" style={{ backgroundColor: `${profile.theme.colors.background}cc`, borderColor: `${color}15` }}>
-        <div className="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)` }}>
-              <span className="text-white font-bold text-[8px]">V</span>
-            </div>
+            <img src="/logo.svg" alt="Viefolio" className="logo-mark w-8 h-8" />
             <span className="text-xs" style={{ color: `${profile.theme.colors.text}80` }}>Powered by <a href="https://viefolio.com" className="font-semibold transition-colors hover:opacity-70" style={{ color }}>Viefolio</a></span>
           </div>
           <span className="text-[10px]" style={{ color: `${profile.theme.colors.text}40` }}>{domain}.viefolio.com</span>

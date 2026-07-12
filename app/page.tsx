@@ -377,6 +377,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-6 text-sm text-[#94a3b8]">
             <a href="/privacy" className="hover:text-[#64748b] transition-colors">Privacy</a>
+            <a href="mailto:support@viefolio.com" className="hover:text-[#64748b] transition-colors">Contact</a>
             <a href="/terms" className="hover:text-[#64748b] transition-colors">Terms</a>
           </div>
         </div>
