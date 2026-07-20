@@ -404,7 +404,8 @@ function ProjectCard({ p, color, onClick, onImageClick, className = "", cardStyl
     <button onClick={onClick} className={`rounded-2xl border border-[#e2e8f0] overflow-hidden hover:shadow-lg hover:shadow-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 text-left w-full group ${className}`} style={{ backgroundColor: 'var(--theme-card)', ...getCardOverride(cardStyle) }}>
       {p.showImage && p.imageUrl ? (
         <div className="w-full h-40 overflow-hidden relative flex items-center justify-center" onClick={e => { if (onImageClick) { e.stopPropagation(); onImageClick(p.imageUrl); }}}>
-          <img src={p.imageUrl} alt={p.title} loading="lazy" decoding="async" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/>
+          <img src={p.imageUrl} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl opacity-50" />
+          <img src={p.imageUrl} alt={p.title} loading="lazy" decoding="async" className="relative z-10 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/>
           {onImageClick && <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100"><svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"/></svg></div>}
         </div>
       ) : (
@@ -492,7 +493,8 @@ function CarouselCard({ p, color, onClick, onImageClick, cardStyle }: { p: Proje
     <button onClick={onClick} className="min-w-[320px] max-w-[350px] h-[550px] flex flex-col border border-[#e2e8f0] rounded-xl shadow-sm overflow-hidden snap-center text-left shrink-0 hover:shadow-lg transition-all duration-300 group" style={{ backgroundColor: 'var(--theme-card)', ...getCardOverride(cardStyle) }}>
       {p.showImage && p.imageUrl ? (
         <div className="w-full h-44 overflow-hidden shrink-0 relative flex items-center justify-center" onClick={e => { if (onImageClick) { e.stopPropagation(); onImageClick(p.imageUrl); }}}>
-          <img src={p.imageUrl} alt={p.title} loading="lazy" decoding="async" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/>
+          <img src={p.imageUrl} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl opacity-50" />
+          <img src={p.imageUrl} alt={p.title} loading="lazy" decoding="async" className="relative z-10 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/>
           {onImageClick && <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100"><svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"/></svg></div>}
         </div>
       ) : (
@@ -643,7 +645,8 @@ function DetailModal({ p, color, onClose, onImageClick }: { p: Project; color: s
         <div className="sticky top-0 z-30 rounded-t-2xl" style={{ backgroundColor: 'var(--theme-card)' }}>
           {p.showImage && p.imageUrl ? (
             <div className="w-full h-52 overflow-hidden rounded-t-2xl relative group cursor-pointer flex items-center justify-center" onClick={() => { if (onImageClick) onImageClick(p.imageUrl); }}>
-              <img src={p.imageUrl} alt={p.title} loading="lazy" decoding="async" className="w-full h-full object-contain transition-transform group-hover:scale-[1.02] duration-500"/>
+              <img src={p.imageUrl} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl opacity-50" />
+              <img src={p.imageUrl} alt={p.title} loading="lazy" decoding="async" className="relative z-10 w-full h-full object-contain transition-transform group-hover:scale-[1.02] duration-500"/>
               {onImageClick && <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100"><svg className="w-8 h-8 text-white drop-shadow-md" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"/></svg></div>}
             </div>
           ) : (
