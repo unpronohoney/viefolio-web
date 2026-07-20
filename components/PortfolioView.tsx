@@ -666,7 +666,7 @@ function DetailModal({ p, color, onClose, onImageClick }: { p: Project; color: s
               )}
             </div>
           </div>
-          <button onClick={onClose} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-[#64748b] hover:text-[#0f172a] shadow-sm transition-colors">
+          <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="absolute top-3 right-3 z-40 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-[#64748b] hover:text-[#0f172a] shadow-sm transition-colors">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
